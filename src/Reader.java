@@ -1,43 +1,33 @@
-import java.util.Scanner;
 public class Reader {
-    public static void main(String[] args){
-        Scanner in = new Scanner(System.in);
+    private String fullName;
+    private int ticketNumber;
+    private String faculty;
+    private String birthDate;
+    private String phoneNumber;
 
-        System.out.print("Введите ФИО: ");
-        String fio = in.nextLine();
-
-        System.out.print("Введите номер читательского билета: ");
-        int number = in.nextInt();
-
-        System.out.print("Введите факультет: ");
-        String facul = in.next();
-
-        System.out.print("Введите дату рождения: ");
-        String data = in.next();
-
-        System.out.print("Введите номер телефона: ");
-        int phone = in.nextInt();
-
-        System.out.print("Введите количество книг: ");
-        int kol = in.nextInt();
-
-        takeBook(fio);
-        takeBook(fio, kol);
-        returnBook(fio);
-        returnBook(fio, kol);
+    public Reader(String fullName, int ticketNumber, String faculty, String birthDate, String phoneNumber) {
+        this.fullName = fullName;
+        this.ticketNumber = ticketNumber;
+        this.faculty = faculty;
+        this.birthDate = birthDate;
+        this.phoneNumber = phoneNumber;
     }
-    public static void takeBook(String f, int k){
-        int kol = k;
-        System.out.println(f + " взял " + k + " книги.");
+
+    public void takeBook(int booksCount) {
+        System.out.println(fullName + " взял " + booksCount + " книги.");
     }
-    public static void takeBook(String f){
-        System.out.println(f + " взял книги: Приключения, Словарь, Энциклопедия");
+
+    public void takeBook(String... bookNames) {
+        String booksStr = String.join(", ", bookNames);
+        System.out.println(fullName + " взял книги: " + booksStr);
     }
-    public static void returnBook(String f){
-        System.out.println(f + " вернул книги: Приключения, Словарь, Энциклопедия");
+
+    public void returnBook(int booksCount) {
+        System.out.println(fullName + " вернул " + booksCount + " книги.");
     }
-    public static void returnBook(String f, int k ){
-        int kol = k;
-        System.out.println(f + " вернул " + k + " книги.");
+
+    public void returnBook(String... bookNames) {
+        String booksStr = String.join(", ", bookNames);
+        System.out.println(fullName + " вернул книги: " + booksStr);
     }
 }
